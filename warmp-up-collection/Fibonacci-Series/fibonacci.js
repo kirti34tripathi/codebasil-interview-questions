@@ -79,3 +79,32 @@ function fib(n) {
         memo[i] = memo[i - 1] + memo[i - 2];
     }
     return memo[n];
+}
+
+
+/**
+ * Optimized bottom-up dynamic Approach
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ * @param {Number} n
+ * @return {Number} The Nth term.
+ */
+
+//Optimized bottom-up dynamic Fibonacci solution
+// Compute the nth Fibonacci number iteratively with constant space.
+// We only need to save the two most recently computed values.
+
+function fibonacci(n) {
+  if (n <= 1) {
+    return n;
+  }
+
+  let current = 1;
+  let previous = 0;
+  for (let i = 2; i <= n; i++) {
+    current = current + previous;
+    previous = current - previous;
+  }
+
+  return current;
+}
