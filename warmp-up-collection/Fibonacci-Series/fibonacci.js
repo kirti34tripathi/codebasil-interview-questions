@@ -39,12 +39,12 @@ function fib(n) {
     if (n < 2) {
         return n;
     }
-    let memo = new Array(n + 1);
+    let cache = new Array(n + 1);
     for(let i = 0; i < cache.length; i++) {
         cache[i] = -1;
     }
-    let cache[0] = 0;
-    let cache[1] = 1;
+    cache[0] = 0;
+    cache[1] = 1;
     return fibTopDown(n, cache);
 }
 
@@ -56,3 +56,26 @@ function fibTopDown(n, cache) {
         return cache[n];
     }
 }
+
+
+/**
+ * Bottom Up dynamic Approach
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ * @param {Number} n
+ * @return {Number} The Nth term.
+ */
+
+// Compute the nth Fibonacci number recursively.
+// Optimized by caching subproblem results.
+
+function fib(n) {
+    if(n === 0) return 0;
+    
+    let memo = new Array(n + 1);
+    memo[1] = 1;
+    
+    for(let i = 2; i <= n; i++) {
+        memo[i] = memo[i - 1] + memo[i - 2];
+    }
+    return memo[n];
